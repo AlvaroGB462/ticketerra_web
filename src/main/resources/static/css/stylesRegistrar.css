@@ -1,0 +1,254 @@
+@charset "UTF-8";
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-image: url('/static/imagenes/Fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #0cc0df;
+  border-bottom: 2px solid #0cc0df;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+.logo h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #0cc0df;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav a {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: white;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #0cc0df;
+}
+
+.bi-person-circle {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.bi-person-circle:hover {
+  color: #0cc0df;
+}
+
+/* Menú hamburguesa responsivo */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+}
+
+
+.container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.caja-registro {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  color: rgba(243, 244, 246, 1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 20px 25px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin: 10px;
+}
+
+.titulo-registro {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0CC0DF;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control-label {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: normal;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"] {
+  background-color: #2A2A2A;
+  border: 1px solid #444444;
+  border-radius: 5px;
+  padding: 8px 10px;
+  color: #FFFFFF;
+  width: 100%;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: #0CC0DF;
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: #0CC0DF;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 8px 15px;
+  width: 100%;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0098D4;
+}
+
+.btn{
+  background-color: #0CC0DF;
+}
+
+.btn-regresar {
+  background-color: transparent;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #0CC0DF;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.btn-regresar:hover {
+  color: #0098D4;
+}
+
+.btn-regresar svg {
+  margin-right: 5px;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-premium {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.info-premium strong {
+  color: #0CC0DF;
+}
+
+.row {
+  margin-bottom: 15px;
+}
+
+/* Estilo para los inputs de la tarjeta */
+input[type="text"][id*="numero-tarjeta"],
+input[type="text"][id*="nombre-tarjeta"],
+input[type="text"][id*="fecha-expiracion"],
+input[type="text"][id*="cvv"] {
+  background-color: #2A2A2A;
+  border: 1px solid #444444;
+  border-radius: 5px;
+  color: #FFFFFF;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+input[type="text"][id*="numero-tarjeta"]:focus,
+input[type="text"][id*="nombre-tarjeta"]:focus,
+input[type="text"][id*="fecha-expiracion"]:focus,
+input[type="text"][id*="cvv"]:focus {
+  border-color: #0CC0DF;
+  outline: none;
+}
