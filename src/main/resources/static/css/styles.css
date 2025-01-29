@@ -210,3 +210,21 @@ main p {
   height: 30px;
   background-size: 50%;
 }
+
+/* Estilos para la corona en el menú */
+.bi-crown {
+    color: gold;
+    font-size: 1.5rem;
+}
+
+/* Resaltar la corona cuando el usuario es premium */
+.bi-crown.premium {
+    color: #ffd700; /* Dorado */
+    cursor: default;
+    pointer-events: none; /* Evitar que se pueda hacer clic */
+}
+
+/* Ocultar el botón de registro cuando el usuario está logueado */
+.hidden {
+    display: none;
+}

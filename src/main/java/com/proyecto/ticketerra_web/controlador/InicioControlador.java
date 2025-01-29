@@ -9,18 +9,16 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/usuarios")
 public class InicioControlador {
 
-    // Mostrar la vista de inicio
+    // Mostrar la vista de inicio cuando se accede a /usuarios/index
     @GetMapping("/index")
     public ModelAndView loginForm() {
         ModelAndView mav = new ModelAndView("index");
         return mav;
     }
-    
- // Mostrar la vista de inicio (en la raíz del sitio)
+
+    // Redirigir desde la raíz (/) a /usuarios/index
     @GetMapping("/")
-    public ModelAndView inicio() {
-        ModelAndView mav = new ModelAndView("index");
-        return mav;
+    public String redirectToIndex() {
+        return "redirect:/usuarios/index"; // Redirige a /usuarios/index
     }
 }
-
