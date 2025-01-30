@@ -1,182 +1,186 @@
 package com.proyecto.ticketerra_web.modelo;
 
 public class Usuario {
-    private String nombreCompleto;
-    private String correo;
-    private String telefono;
-    private String codigoPostal;
-    private String contrasena;
-    private String repetirContrasena;
+	private String nombreCompleto;
+	private String correo;
+	private String telefono;
+	private String codigoPostal;
+	private String contrasena;
+	private String repetirContrasena;
 
-    private String tokenRecuperacion;
-    private long tokenExpiracion;
+	private String tokenRecuperacion;
+	private long tokenExpiracion;
 
-    private boolean premium;
-    private boolean activo;
-    private String tokenConfirmacion;
+	private boolean premium;
+	private boolean activo;
+	private String tokenConfirmacion;
 
-    private String numeroTarjeta;
-    private String nombreTarjeta;
-    private String fechaExpiracion;
-    private String cvv;
+	private String numeroTarjeta;
+	private String nombreTarjeta;
+	private String fechaExpiracion;
+	private String cvv;
 
-    private String rol;  // Campo para el rol
+	private String rol;
 
-    // Constructor original
-    public Usuario(String nombreCompleto, String correo, String telefono, String codigoPostal, String contrasena) {
-        this.nombreCompleto = nombreCompleto;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.codigoPostal = codigoPostal;
-        this.contrasena = contrasena;
-        this.premium = false; // Por defecto, no es premium
-        this.activo = false;  // Por defecto, no está activo
-        this.rol = "user"; // Asignamos el rol por defecto
-    }
+	// Constructor por defecto (sin parámetros)
+	public Usuario() {
+	}
 
-    // Constructor para usuarios premium
-    public Usuario(String nombreCompleto, String correo, String telefono, String codigoPostal, String contrasena,
-                   boolean premium, String numeroTarjeta, String nombreTarjeta, String fechaExpiracion, String cvv) {
-        this.nombreCompleto = nombreCompleto;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.codigoPostal = codigoPostal;
-        this.contrasena = contrasena;
-        this.premium = premium;
-        this.numeroTarjeta = numeroTarjeta;
-        this.nombreTarjeta = nombreTarjeta;
-        this.fechaExpiracion = fechaExpiracion;
-        this.cvv = cvv;
-        this.activo = false;  // Por defecto, no está activo
-        this.rol = "user"; // Por defecto, el rol es "user"
-    }
+	// Constructor original
+	public Usuario(String nombreCompleto, String correo, String telefono, String codigoPostal, String contrasena) {
+		this.nombreCompleto = nombreCompleto;
+		this.correo = correo;
+		this.telefono = telefono;
+		this.codigoPostal = codigoPostal;
+		this.contrasena = contrasena;
+		this.premium = false; // Por defecto, no es premium
+		this.activo = false; // Por defecto, no está activo
+		this.rol = "user"; // Asignamos el rol por defecto
+	}
 
-    // Getters y Setters para los atributos existentes
-    public String getTokenRecuperacion() {
-        return tokenRecuperacion;
-    }
+	// Constructor para usuarios premium
+	public Usuario(String nombreCompleto, String correo, String telefono, String codigoPostal, String contrasena,
+			boolean premium, String numeroTarjeta, String nombreTarjeta, String fechaExpiracion, String cvv) {
+		this.nombreCompleto = nombreCompleto;
+		this.correo = correo;
+		this.telefono = telefono;
+		this.codigoPostal = codigoPostal;
+		this.contrasena = contrasena;
+		this.premium = premium;
+		this.numeroTarjeta = numeroTarjeta;
+		this.nombreTarjeta = nombreTarjeta;
+		this.fechaExpiracion = fechaExpiracion;
+		this.cvv = cvv;
+		this.activo = false; // Por defecto, no está activo
+		this.rol = "user"; // Por defecto, el rol es "user"
+	}
 
-    public void setTokenRecuperacion(String tokenRecuperacion) {
-        this.tokenRecuperacion = tokenRecuperacion;
-    }
+	// Getters y Setters para los atributos existentes
+	public String getTokenRecuperacion() {
+		return tokenRecuperacion;
+	}
 
-    public long getTokenExpiracion() {
-        return tokenExpiracion;
-    }
+	public void setTokenRecuperacion(String tokenRecuperacion) {
+		this.tokenRecuperacion = tokenRecuperacion;
+	}
 
-    public void setTokenExpiracion(long tokenExpiracion) {
-        this.tokenExpiracion = tokenExpiracion;
-    }
+	public long getTokenExpiracion() {
+		return tokenExpiracion;
+	}
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
+	public void setTokenExpiracion(long tokenExpiracion) {
+		this.tokenExpiracion = tokenExpiracion;
+	}
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
+	public String getNombreCompleto() {
+		return nombreCompleto;
+	}
 
-    public String getCorreo() {
-        return correo;
-    }
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+	public String getCorreo() {
+		return correo;
+	}
 
-    public String getTelefono() {
-        return telefono;
-    }
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+	public String getTelefono() {
+		return telefono;
+	}
 
-    public String getCodigoPostal() {
-        return codigoPostal;
-    }
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 
-    public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
-    }
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
 
-    public String getContrasena() {
-        return contrasena;
-    }
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
+	public String getContrasena() {
+		return contrasena;
+	}
 
-    public String getRepetirContrasena() {
-        return repetirContrasena;
-    }
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
 
-    public void setRepetirContrasena(String repetirContrasena) {
-        this.repetirContrasena = repetirContrasena;
-    }
+	public String getRepetirContrasena() {
+		return repetirContrasena;
+	}
 
-    public boolean isPremium() {
-        return premium;
-    }
+	public void setRepetirContrasena(String repetirContrasena) {
+		this.repetirContrasena = repetirContrasena;
+	}
 
-    public void setPremium(boolean premium) {
-        this.premium = premium;
-    }
+	public boolean isPremium() {
+		return premium;
+	}
 
-    public boolean isActivo() {
-        return activo;
-    }
+	public void setPremium(boolean premium) {
+		this.premium = premium;
+	}
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
+	public boolean isActivo() {
+		return activo;
+	}
 
-    public String getTokenConfirmacion() {
-        return tokenConfirmacion;
-    }
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
 
-    public void setTokenConfirmacion(String tokenConfirmacion) {
-        this.tokenConfirmacion = tokenConfirmacion;
-    }
+	public String getTokenConfirmacion() {
+		return tokenConfirmacion;
+	}
 
-    public String getRol() {
-        return rol;
-    }
+	public void setTokenConfirmacion(String tokenConfirmacion) {
+		this.tokenConfirmacion = tokenConfirmacion;
+	}
 
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
+	public String getRol() {
+		return rol;
+	}
 
-    public String getNumeroTarjeta() {
-        return numeroTarjeta;
-    }
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 
-    public void setNumeroTarjeta(String numeroTarjeta) {
-        this.numeroTarjeta = numeroTarjeta;
-    }
+	public String getNumeroTarjeta() {
+		return numeroTarjeta;
+	}
 
-    public String getNombreTarjeta() {
-        return nombreTarjeta;
-    }
+	public void setNumeroTarjeta(String numeroTarjeta) {
+		this.numeroTarjeta = numeroTarjeta;
+	}
 
-    public void setNombreTarjeta(String nombreTarjeta) {
-        this.nombreTarjeta = nombreTarjeta;
-    }
+	public String getNombreTarjeta() {
+		return nombreTarjeta;
+	}
 
-    public String getFechaExpiracion() {
-        return fechaExpiracion;
-    }
+	public void setNombreTarjeta(String nombreTarjeta) {
+		this.nombreTarjeta = nombreTarjeta;
+	}
 
-    public void setFechaExpiracion(String fechaExpiracion) {
-        this.fechaExpiracion = fechaExpiracion;
-    }
+	public String getFechaExpiracion() {
+		return fechaExpiracion;
+	}
 
-    public String getCvv() {
-        return cvv;
-    }
+	public void setFechaExpiracion(String fechaExpiracion) {
+		this.fechaExpiracion = fechaExpiracion;
+	}
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
-    }
+	public String getCvv() {
+		return cvv;
+	}
+
+	public void setCvv(String cvv) {
+		this.cvv = cvv;
+	}
 }
