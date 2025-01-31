@@ -1,6 +1,7 @@
 package com.proyecto.ticketerra_web.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.proyecto.ticketerra_web.modelo.Usuario;
 import com.proyecto.ticketerra_web.servicio.UsuarioServicio;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +27,7 @@ public class LoginControlador {
     }
 
     // Mostrar la vista de login
+ // Mostrar la vista de login
     @GetMapping("/login")
     public ModelAndView loginForm() {
         ModelAndView mav = new ModelAndView("login");
@@ -34,19 +37,31 @@ public class LoginControlador {
 
     // Manejar el login con datos del formulario
     @PostMapping("/login")
-    public String procesarLogin(@RequestParam String correo, @RequestParam String contrasena, HttpSession session, Model model) {
-        // Llamada al servicio para verificar las credenciales
+    public ModelAndView procesarLogin(@RequestParam String correo, @RequestParam String contrasena,
+                                      HttpSession session) {
+
         boolean loginExitoso = usuarioServicio.loginUsuario(correo, contrasena);
 
         if (loginExitoso) {
-            session.setAttribute("usuario", correo); // Guardamos la sesión del usuario
-            return "index"; // Redirige al index después de un login exitoso
+            // Obtenemos el objeto Usuario completo
+            Usuario usuario = usuarioServicio.obtenerUsuarioPorCorreo(correo);
+            
+            // Guardamos el objeto completo Usuario en la sesión
+            session.setAttribute("usuario", usuario);  // Almacenamos el objeto completo
+            session.setMaxInactiveInterval(1200); // Expira en 20 minutos
+            
+            // Redirigimos a la página principal
+            ModelAndView mav = new ModelAndView("index");
+            mav.addObject("usuario", usuario); // Para mostrar el usuario en la vista
+            return mav;
         } else {
-            model.addAttribute("mensaje", "Correo o contraseña incorrectos");
-            return "login"; // Retorna a la vista de login con el mensaje de error
+            // Si el login falla, volvemos al login con un mensaje de error
+            ModelAndView mav = new ModelAndView("login");
+            mav.addObject("mensaje", "Correo o contraseña incorrectos");
+            return mav;
         }
     }
-
+    
     // Mostrar formulario para ingresar el correo
     @GetMapping("/recuperar")
     public ModelAndView mostrarRecuperarContrasena() {
@@ -56,16 +71,14 @@ public class LoginControlador {
 
     // Procesar la solicitud de recuperación
     @PostMapping("/recuperar")
-    public String procesarRecuperacion(@RequestParam String correo, Model model) {
+    public ResponseEntity<String> procesarRecuperacion(@RequestParam String correo) {
         boolean enviado = usuarioServicio.enviarTokenRecuperacion(correo);
 
         if (enviado) {
-            model.addAttribute("mensaje", "Revisa tu correo para cambiar la contraseña.");
+            return ResponseEntity.ok("Revisa tu correo para cambiar la contraseña.");
         } else {
-            model.addAttribute("mensaje", "El correo no está registrado.");
+            return ResponseEntity.status(400).body("El correo no está registrado.");
         }
-
-        return "recuperar";
     }
 
     // Mostrar formulario para restablecer la contraseña
@@ -78,22 +91,25 @@ public class LoginControlador {
 
     // Procesar cambio de contraseña
     @PostMapping("/restablecer")
-    public String procesarRestablecer(@RequestParam String token, @RequestParam String nuevaContrasena,
-                                      @RequestParam String repetirContrasena, Model model) {
+    public ResponseEntity<String> procesarRestablecer(@RequestParam String token, @RequestParam String nuevaContrasena,
+            @RequestParam String repetirContrasena, Model model) {
 
         if (!nuevaContrasena.equals(repetirContrasena)) {
-            model.addAttribute("mensaje", "Las contraseñas no coinciden.");
-            return "restablecer";
+            return ResponseEntity.badRequest().body("Las contraseñas no coinciden.");
         }
 
         boolean cambiado = usuarioServicio.restablecerContrasena(token, nuevaContrasena);
 
         if (cambiado) {
-            model.addAttribute("mensaje", "Contraseña cambiada con éxito. Inicia sesión.");
-            return "login"; // Redirigir al login
+            return ResponseEntity.ok("Contraseña cambiada con éxito. Inicia sesión.");
         } else {
-            model.addAttribute("mensaje", "Error al cambiar la contraseña.");
-            return "restablecer";
+            return ResponseEntity.status(500).body("Error al cambiar la contraseña.");
         }
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();  // Invalida la sesión
+        return "redirect:/usuarios/login"; // Redirige al login después de cerrar sesión
     }
 }

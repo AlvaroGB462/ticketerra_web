@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,6 +54,15 @@
 			en cada paso del camino.
 		</p>
 		<a href="/usuarios/registrar"><button class="button">Registrarse</button></a>
+
+		<!-- Mostrar el rol del usuario si está logueado -->
+		<c:if test="${not empty sessionScope.usuario}">
+			<h1>Bienvenido, ${sessionScope.usuario.nombreCompleto}</h1>
+			<p>Tu rol es: ${sessionScope.usuario.rol}</p>
+			<a href="/usuarios/logout">
+				<button class="button">Cerrar sesión</button>
+			</a>
+		</c:if>
 	</main>
 
 	<!-- Carrusel de Valoraciones -->

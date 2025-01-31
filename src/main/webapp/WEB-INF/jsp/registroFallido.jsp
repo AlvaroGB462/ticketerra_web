@@ -1,15 +1,17 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro Fallido</title>
+    <meta charset="UTF-8">
+    <title>Registro Fallido</title>
+    <link rel="stylesheet" href="/static/css/stylesFallido.css">
 </head>
 <body>
-	<h1>¡Error en el Registro!</h1>
-	<p>Hubo un problema al intentar registrar tu cuenta. Por favor,
-		intenta de nuevo más tarde.</p>
-	<a href="/usuarios/registrar">Volver a intentar</a>
+    <div class="error-container">
+        <h2 class="error-title">❌ Registro Fallido</h2>
+        <p class="error-message">Ocurrió un problema al registrar tu cuenta.</p>
+
+        <a href="/usuarios/registrar" class="retry-button">← Volver al Registro</a>
+    </div>
 </body>
 </html>

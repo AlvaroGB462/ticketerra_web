@@ -37,6 +37,12 @@ public class Usuario {
 		this.activo = false; // Por defecto, no está activo
 		this.rol = "user"; // Asignamos el rol por defecto
 	}
+	
+	//COnstructor para loguearse
+	public Usuario(String correo, String contrasena) {
+	    this.correo = correo;
+	    this.contrasena = contrasena;
+	}
 
 	// Constructor para usuarios premium
 	public Usuario(String nombreCompleto, String correo, String telefono, String codigoPostal, String contrasena,
