@@ -47,12 +47,12 @@ public class LoginControlador {
             Usuario usuario = usuarioServicio.obtenerUsuarioPorCorreo(correo);
             
             // Guardamos el objeto completo Usuario en la sesión
-            session.setAttribute("usuario", usuario);  // Almacenamos el objeto completo
-            session.setMaxInactiveInterval(1200); // Expira en 20 minutos
+            session.setAttribute("usuario", usuario); 
+            session.setMaxInactiveInterval(1200);
             
             // Redirigimos a la página principal
             ModelAndView mav = new ModelAndView("index");
-            mav.addObject("usuario", usuario); // Para mostrar el usuario en la vista
+            mav.addObject("usuario", usuario);
             return mav;
         } else {
             // Si el login falla, volvemos al login con un mensaje de error

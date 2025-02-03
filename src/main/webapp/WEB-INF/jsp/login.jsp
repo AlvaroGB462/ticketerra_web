@@ -32,7 +32,7 @@
 		<nav class="nav">
 			<a href="/usuarios/index" class="nav-link" id="link-home">Inicio</a>
 			<a href="verTickets.html" class="nav-link" id="link-tickets">Mis
-				Tickets</a> <a href="crearTicket.html" class="nav-link" id="link-create">Crear
+				Tickets</a> <a href="/usuarios/crearTicket" class="nav-link" id="link-create">Crear
 				Ticket</a> <a class="nav-link bi bi-person-circle"
 				href="/usuarios/login" id="link-login"></a>
 		</nav>

@@ -36,7 +36,7 @@
 		<nav class="nav">
 			<a href="/usuarios/index" class="nav-link" id="link-home">Inicio</a>
 			<a href="verTickets.html" class="nav-link" id="link-tickets">Mis
-				Tickets</a> <a href="crearTicket.html" class="nav-link" id="link-create">Crear
+				Tickets</a> <a href="/ticket/crearTicket" class="nav-link" id="link-create">Crear
 				Ticket</a> <a class="nav-link bi bi-person-circle"
 				href="/usuarios/login" id="link-login"></a>
 		</nav>
@@ -55,14 +55,6 @@
 		</p>
 		<a href="/usuarios/registrar"><button class="button">Registrarse</button></a>
 
-		<!-- Mostrar el rol del usuario si está logueado -->
-		<c:if test="${not empty sessionScope.usuario}">
-			<h1>Bienvenido, ${sessionScope.usuario.nombreCompleto}</h1>
-			<p>Tu rol es: ${sessionScope.usuario.rol}</p>
-			<a href="/usuarios/logout">
-				<button class="button">Cerrar sesión</button>
-			</a>
-		</c:if>
 	</main>
 
 	<!-- Carrusel de Valoraciones -->

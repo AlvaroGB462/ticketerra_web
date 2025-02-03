@@ -11,6 +11,11 @@
         <h2 class="error-title">❌ Registro Fallido</h2>
         <p class="error-message">Ocurrió un problema al registrar tu cuenta.</p>
 
+        <%-- Mostrar el mensaje de error si existe --%>
+        <c:if test="${not empty error}">
+            <p class="error-message">${error}</p>
+        </c:if>
+
         <a href="/usuarios/registrar" class="retry-button">← Volver al Registro</a>
     </div>
 </body>
